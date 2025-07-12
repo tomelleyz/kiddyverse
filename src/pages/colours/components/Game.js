@@ -30,6 +30,8 @@ export default function Game() {
   const [colorsNotYetAsked, setColorsNotYetAsked] = useState([...allColors]);
   const [colorsAlreadyAsked, setColorsAlreadyAsked] = useState([]);
   const [displayedOptions, setDisplayedOptions] = useState([]);
+  const [attempts, setAttempts] = useState([0]);
+  const [showCorrectColor, setShowCorrectColor] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
 
   const startNewRound = () => {
@@ -67,6 +69,8 @@ export default function Game() {
       selectedColor,
     ]);
 
+    setAttempts(0);
+    setShowCorrectColor(false);
     setTargetColor(selectedColor);
     setColorsAlreadyAsked(excludedColors);
     setColorsNotYetAsked(remainingColors);
@@ -81,8 +85,17 @@ export default function Game() {
   const handleColorClick = (clickedColor) => {
     if (clickedColor.name === targetColor.name) {
       setScore((prevScore) => prevScore + 1);
-
       startNewRound();
+    } else {
+      const newAttempts = attempts + 1;
+      setAttempts(newAttempts);
+
+      if (newAttempts >= 3) {
+        setShowCorrectColor(true);
+        setTimeout(() => {
+          startNewRound();
+        }, 3000);
+      }
     }
   };
 
@@ -194,7 +207,7 @@ export default function Game() {
                 <button
                   key={color.name}
                   onClick={() => handleColorClick(color)}
-                  className="h-36 w-full cursor-pointer rounded-xl shadow-lg outline-offset-2 outline-gray-700 transition-[outline] hover:outline-2"
+                  className={`h-36 w-full cursor-pointer rounded-xl shadow-lg outline-offset-2 outline-gray-700 transition-[outline,scale,opacity] hover:outline-2 ${showCorrectColor && color.name === targetColor.name ? "scale-110" : ""} ${showCorrectColor && color.name !== targetColor.name ? "opacity-30" : ""}`}
                   style={{ backgroundColor: color.hexcode }}
                 ></button>
               ))}
