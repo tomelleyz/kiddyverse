@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 
 const allColors = [
   { name: "Red", hexcode: "#FF0000" },
@@ -167,15 +168,26 @@ export default function Game() {
 
           <div className="mx-auto max-w-2xl">
             {targetColor && (
-              <h1 className="mb-6 text-4xl font-semibold text-teal-600">
+              <motion.h1
+                layout="preserve-aspect"
+                id="colorQuiz"
+                className="mx-auto mb-6 w-fit text-4xl font-semibold text-teal-600"
+              >
                 Can you find the{" "}
-                <span className="lowercase">{targetColor.name}</span>
-                <span
-                  className="ml-1 inline-block size-7 rounded-xs border border-gray-400"
-                  style={{ backgroundColor: targetColor.hexcode }}
-                ></span>{" "}
+                <motion.span
+                  key={targetColor.name}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <span className="lowercase">{targetColor.name}</span>
+                  <span
+                    className="ml-1 inline-block size-7 rounded-xs border border-gray-400"
+                    style={{ backgroundColor: targetColor.hexcode }}
+                  ></span>{" "}
+                </motion.span>
                 colour?
-              </h1>
+              </motion.h1>
             )}
             <div className="grid grid-cols-2 gap-6 sm:gap-12">
               {displayedOptions.map((color) => (
