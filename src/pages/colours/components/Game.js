@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
 const allColors = [
@@ -23,6 +23,16 @@ const allColors = [
   { name: "Silver", hexcode: "#C0C0C0" },
   { name: "Navy", hexcode: "#000080" },
 ];
+
+const sounds = {
+  simpleDing: new Audio("/assets/sounds/simple-ding.mp3"),
+  wrongBuzzer: new Audio("/assets/sounds/wrong-buzzer.mp3"),
+};
+
+const playSound = (name) => {
+  sounds[name].currentTime = 0;
+  sounds[name].play();
+};
 
 export default function Game() {
   const [score, setScore] = useState(0);
@@ -85,10 +95,12 @@ export default function Game() {
   const handleColorClick = (clickedColor) => {
     if (clickedColor.name === targetColor.name) {
       setScore((prevScore) => prevScore + 1);
+      playSound("simpleDing");
       startNewRound();
     } else {
       const newAttempts = attempts + 1;
       setAttempts(newAttempts);
+      playSound("wrongBuzzer");
 
       if (newAttempts >= 3) {
         setShowCorrectColor(true);
@@ -135,6 +147,7 @@ export default function Game() {
             <span className="block text-lg font-semibold text-gray-600">
               Remaining colours: {colorsNotYetAsked.length}
             </span> */}
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
