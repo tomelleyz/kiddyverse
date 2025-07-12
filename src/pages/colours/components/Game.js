@@ -42,7 +42,7 @@ export default function Game() {
   const [displayedOptions, setDisplayedOptions] = useState([]);
   const [attempts, setAttempts] = useState([0]);
   const [showCorrectColor, setShowCorrectColor] = useState(false);
-  const [gameCompleted, setGameCompleted] = useState(false);
+  const [gameCompleted, setGameCompleted] = useState(true);
 
   const startNewRound = () => {
     if (colorsNotYetAsked.length === 0) {
@@ -125,15 +125,19 @@ export default function Game() {
     <div className="p-8">
       {gameCompleted ? (
         <div className="mx-auto max-w-2xl">
-          <h1 className="mb-3 text-4xl font-bold text-gray-700">
-            🎉 Game Complete!
+          <h1 className="text-5xl font-bold text-teal-600">
+            🎉 You Did It! 🎉
           </h1>
-          <p className="mb-3 text-lg font-semibold text-gray-700">
-            Final Score: {score}/{allColors.length}
+          <p className="mb-6 text-2xl font-semibold">
+            You&apos;re a Color Matching Star! 🌟
+          </p>
+
+          <p className="mb-12 text-xl text-gray-700">
+            Your Score: {score} out of {allColors.length}
           </p>
           <button
             onClick={resetGame}
-            className="rounded-xl border-2 border-[#0c098c] bg-[#79EE8D] px-9 py-3 text-center text-lg text-white"
+            className="cursor-pointer rounded-full bg-gradient-to-r from-[#79ee8d] to-[#0c098c] px-8 py-3 text-xl font-semibold text-white transition-transform duration-300 hover:scale-105"
           >
             Play Again
           </button>
