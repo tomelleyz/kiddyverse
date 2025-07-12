@@ -8,8 +8,36 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-balsamiq-sans: "Balsamiq Sans", sans-serif;
+}
+
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url("../../public/assets/fonts/BalsamiqSans-Regular.ttf");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url("../../public/assets/fonts/BalsamiqSans-Italic.ttf");
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url("../../public/assets/fonts/BalsamiqSans-Bold.ttf");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url("../../public/assets/fonts/BalsamiqSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-display: swap;
+  font-style: italic;
 }
 
 body {
