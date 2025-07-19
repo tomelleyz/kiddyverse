@@ -25,7 +25,7 @@ const allColors = [
 ];
 
 const sounds = {
-  simpleDing: new Audio("/assets/sounds/simple-ding.mp3"),
+  correctAnswer: new Audio("/assets/sounds/correct-answer.mp3"),
   wrongBuzzer: new Audio("/assets/sounds/wrong-buzzer.mp3"),
 };
 
@@ -42,7 +42,7 @@ export default function Game() {
   const [displayedOptions, setDisplayedOptions] = useState([]);
   const [attempts, setAttempts] = useState([0]);
   const [showCorrectColor, setShowCorrectColor] = useState(false);
-  const [gameCompleted, setGameCompleted] = useState(true);
+  const [gameCompleted, setGameCompleted] = useState(false);
 
   const startNewRound = () => {
     if (colorsNotYetAsked.length === 0) {
@@ -95,7 +95,7 @@ export default function Game() {
   const handleColorClick = (clickedColor) => {
     if (clickedColor.name === targetColor.name) {
       setScore((prevScore) => prevScore + 1);
-      playSound("simpleDing");
+      playSound("correctAnswer");
       startNewRound();
     } else {
       const newAttempts = attempts + 1;
