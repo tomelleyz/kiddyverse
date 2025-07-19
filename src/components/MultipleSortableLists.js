@@ -10,17 +10,29 @@ export default function MultipleSortableLists() {
     B: ["B0", "B1"],
     C: [],
   });
+  const [columnOrder, setColumnOrder] = useState(() => Object.keys(items));
 
   return (
     <DragDropProvider
       onDragOver={(event) => {
+        const { source, target } = event.operation;
+
+        if (source?.type === "column") return;
+
         setItems((items) => move(items, event));
+      }}
+      onDragEnd={(event) => {
+        const { source, target } = event.operation;
+
+        if (event.canceled || source.type !== "column") return;
+
+        setColumnOrder((columns) => move(columns, event));
       }}
     >
       <div className="flex justify-center gap-8 p-20">
-        {Object.entries(items).map(([column, items], index) => (
-          <Column key={column} id={column} index={index}>
-            {items.map((id, index) => (
+        {columnOrder.map((column, columnIndex) => (
+          <Column key={column} id={column} index={columnIndex}>
+            {items[column].map((id, index) => (
               <Item key={id} id={id} index={index} column={column} />
             ))}
           </Column>
