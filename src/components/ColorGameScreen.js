@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 
 const allColors = [
@@ -34,7 +34,7 @@ const playSound = (name) => {
   sounds[name].play();
 };
 
-export default function Game() {
+export default function ColorGameScreen() {
   const [score, setScore] = useState(0);
   const [targetColor, setTargetColor] = useState(null);
   const [colorsNotYetAsked, setColorsNotYetAsked] = useState([...allColors]);

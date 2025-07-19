@@ -2,7 +2,9 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
-const NoSSRGame = dynamic(() => import("./components/Game"), { ssr: false });
+const NoSSRGame = dynamic(() => import("@/components/ColorGameScreen"), {
+  ssr: false,
+});
 
 export default function Colours() {
   return (
@@ -10,6 +12,10 @@ export default function Colours() {
       <Head>
         <title>Colour matching game</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="description"
+          content="Colour matching game to help young children identify, match, and name colours."
+        />
         <meta name="theme-color" content="#fef3c6" />
       </Head>
 
