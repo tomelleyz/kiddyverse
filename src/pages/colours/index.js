@@ -50,6 +50,7 @@ export default function Colours() {
             Home
           </Link>
         </header>
+
         <div className="text-center">
           <NoSSRGame />
         </div>

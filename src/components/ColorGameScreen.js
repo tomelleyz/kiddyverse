@@ -44,7 +44,7 @@ export default function ColorGameScreen() {
   const [showCorrectColor, setShowCorrectColor] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
 
-  const startNewRound = () => {
+  function startNewRound() {
     if (colorsNotYetAsked.length === 0) {
       setGameCompleted(true);
       setTargetColor(null);
@@ -85,12 +85,7 @@ export default function ColorGameScreen() {
     setColorsAlreadyAsked(excludedColors);
     setColorsNotYetAsked(remainingColors);
     setDisplayedOptions(colorOptionsAndSelectedColor);
-
-    // console.log("Target color: ", selectedColor);
-    // console.log("Excluded colors: ", excludedColors);
-    // console.log("Remaining colors: ", remainingColors);
-    // console.log("Displayed options: ", colorOptionsAndSelectedColor);
-  };
+  }
 
   const handleColorClick = (clickedColor) => {
     if (clickedColor.name === targetColor.name) {
@@ -119,6 +114,7 @@ export default function ColorGameScreen() {
 
   useEffect(() => {
     startNewRound();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
