@@ -1,15 +1,18 @@
 import { useDraggable } from "@dnd-kit/react";
 
-export default function DraggableShape(props) {
+export default function DraggableShape({
+  shape,
+  showCorrectShape = false,
+  targetShape = null,
+}) {
   const { ref } = useDraggable({
-    id: props.shape.name,
+    id: `${shape.name}`,
   });
   return (
     <button
       ref={ref}
-      onClick={() => props.handleShapeClick(props.shape)}
-      className={`size-36 cursor-pointer bg-[#8686FC] sm:size-[200px] ${props.showCorrectShape && props.shape.name === props.targetShape.name ? "scale-110" : ""} ${props.showCorrectShape && props.shape.name !== props.targetShape.name ? "opacity-30" : ""}`}
-      style={{ clipPath: props.shape.clipPath }}
+      className={`block size-36 cursor-grab bg-[#8686FC] transition sm:size-[200px] ${showCorrectShape && shape.name === targetShape?.name ? "scale-110" : ""} ${showCorrectShape && shape.name !== targetShape?.name ? "opacity-30" : ""}`}
+      style={{ clipPath: shape.clipPath }}
     ></button>
   );
 }
