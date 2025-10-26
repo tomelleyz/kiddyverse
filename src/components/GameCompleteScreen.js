@@ -1,9 +1,15 @@
-export default function GameCompleteScreen({ score, all, resetGame }) {
+export default function GameCompleteScreen({
+  gameType,
+  score,
+  all,
+  resetGame,
+}) {
   return (
     <div className="mx-auto max-w-2xl text-center">
       <h1 className="text-5xl font-bold text-teal-600">🎉 You Did It! 🎉</h1>
       <p className="mb-6 text-2xl font-semibold">
-        You&apos;re a Shape Puzzle Star! 🌟
+        You&apos;re a{" "}
+        {gameType === "shapes" ? "Shape Puzzle" : "Colour Matching"} Star! 🌟
       </p>
 
       <p className="mb-12 text-xl text-gray-700">

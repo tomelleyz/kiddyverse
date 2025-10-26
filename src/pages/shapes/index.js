@@ -21,7 +21,7 @@ export default function Shapes() {
         <meta name="theme-color" content="oklch(96.2% 0.059 95.617)" />
       </Head>
 
-      <main className="relative min-h-screen bg-amber-100">
+      <main className="relative min-h-dvh bg-amber-100 select-none">
         <Header />
 
         <NoSSRGame />

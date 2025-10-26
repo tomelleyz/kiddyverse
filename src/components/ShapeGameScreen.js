@@ -141,6 +141,7 @@ export default function ColorGameScreen() {
     <div className="p-8">
       {gameCompleted ? (
         <GameCompleteScreen
+          gameType="shapes"
           score={score}
           all={allShapes}
           resetGame={resetGame}

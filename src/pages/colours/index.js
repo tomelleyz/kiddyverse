@@ -20,7 +20,7 @@ export default function Colours() {
         <meta name="theme-color" content="#fef3c6" />
       </Head>
 
-      <main className="relative min-h-screen bg-amber-100 font-balsamiq-sans">
+      <main className="relative min-h-dvh bg-amber-100 select-none">
         <Header />
 
         <NoSSRGame />
