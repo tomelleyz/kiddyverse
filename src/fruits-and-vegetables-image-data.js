@@ -16,6 +16,8 @@ import potato from "@/assets/fruits-and-vegetables/potato.png";
 import strawberry from "@/assets/fruits-and-vegetables/strawberry.png";
 import tomato from "@/assets/fruits-and-vegetables/tomato.png";
 import watermelon from "@/assets/fruits-and-vegetables/watermelon.png";
+import garlic from "@/assets/fruits-and-vegetables/garlic.png";
+import broccoli from "@/assets/fruits-and-vegetables/broccoli.png";
 
 export const fruitsAndVegetablesData = [
   { id: 1, src: apple, alt: "Apple" },
@@ -36,4 +38,6 @@ export const fruitsAndVegetablesData = [
   { id: 16, src: strawberry, alt: "Strawberry" },
   { id: 17, src: tomato, alt: "Tomato" },
   { id: 18, src: watermelon, alt: "Watermelon" },
+  { id: 19, src: garlic, alt: "Garlic" },
+  { id: 20, src: broccoli, alt: "Broccoli" },
 ];
