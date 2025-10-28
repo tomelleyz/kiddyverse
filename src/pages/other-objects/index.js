@@ -1,15 +1,15 @@
 import InfiniteGrid from "@/components/InfiniteGrid";
-import { animalsData } from "@/animal-images-data";
-import Link from "next/link";
+import { otherObjectsData } from "@/other-objects-image-data";
 import Head from "next/head";
+import Link from "next/link";
 
-export default function Animals() {
+export default function OtherObjects() {
   return (
     <>
       <Head>
-        <title>Identify Animals</title>
+        <title>Identify Different Objects</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Identify animals" />
+        <meta name="description" content="Identify different objects" />
       </Head>
 
       <main className="relative flex h-screen w-full items-center justify-center bg-[#F5F7F8]">
@@ -48,7 +48,7 @@ export default function Animals() {
         </div>
 
         <div className="h-full w-full text-black">
-          <InfiniteGrid items={animalsData} isDraggable />
+          <InfiniteGrid items={otherObjectsData} isDraggable />
         </div>
       </main>
     </>
