@@ -212,7 +212,7 @@ export default function InfiniteGrid({ items, isDraggable = false }) {
   return (
     <div
       ref={containerRef}
-      className={`relative h-full w-full overflow-scroll rounded-lg bg-white ${isDraggable ? "cursor-grab" : ""}`}
+      className={`relative h-full w-full overflow-scroll rounded-lg bg-white [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${isDraggable ? "cursor-grab" : ""}`}
       onScroll={handleScroll}
       onMouseDown={onDragStart}
       onMouseMove={onDragMove}

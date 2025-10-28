@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Animals() {
   return (
-    <main className="relative flex h-screen w-full items-center justify-center bg-white font-sans">
+    <main className="relative flex h-screen w-full items-center justify-center bg-[#F5F7F8]">
       <div className="fixed top-6 left-6 z-10 w-fit">
         <Link
           href="/"
