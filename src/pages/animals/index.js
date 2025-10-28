@@ -1,286 +1,47 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useMemo,
-  useCallback,
-} from "react";
+import InfiniteGrid from "@/components/InfiniteGrid";
+import { animalsData } from "@/images-data";
+import Link from "next/link";
 
-// --- Constants ---
-const ITEM_WIDTH = 150; // Width of each grid item
-const ITEM_HEIGHT = 100; // Height of each grid item
-const VIRTUAL_SIZE = 1000000; // Large virtual dimension for "infinite" scroll
-const BUFFER = 2; // Number of extra items to render on each side (top, bottom, left, right)
-
-/**
- * @typedef {object} GridItem
- * @property {string | number} id
- * @property {React.ReactNode} content
- */
-
-/**
- * @typedef {object} InfiniteGridProps
- * @property {GridItem[]} items - The finite array of items to tile infinitely.
- * @property {boolean} [isDraggable=false] - Whether the grid can be dragged.
- */
-
-/**
- * An "infinitely" scrolling grid component that tiles a finite set of items.
- * It supports bi-directional scrolling and optional drag-to-scroll.
- *
- * @param {InfiniteGridProps} props
- */
-function InfiniteGrid({ items, isDraggable = false }) {
-  const containerRef = useRef(null);
-  const [scrollPos, setScrollPos] = useState({ x: 0, y: 0 });
-  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
-
-  // --- Dragging State ---
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartPos = useRef({ x: 0, y: 0 });
-  const dragStartScroll = useRef({ x: 0, y: 0 });
-
-  // --- Tile Calculation ---
-  // Determine how to tile the items (e.g., a 1D array of 9 items will be a 3x3 grid)
-  const { numItems, numColsToTile, numRowsToTile } = useMemo(() => {
-    const num = items.length;
-    if (num === 0) return { numItems: 0, numColsToTile: 0, numRowsToTile: 0 };
-    const cols = Math.ceil(Math.sqrt(num));
-    const rows = Math.ceil(num / cols);
-    return { numItems: num, numColsToTile: cols, numRowsToTile: rows };
-  }, [items]);
-
-  // --- Initial Centering ---
-  useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      // Scroll to the center of the virtual area
-      const centerScrollX = VIRTUAL_SIZE / 2;
-      const centerScrollY = VIRTUAL_SIZE / 2;
-      container.scrollLeft = centerScrollX;
-      container.scrollTop = centerScrollY;
-      setScrollPos({ x: centerScrollX, y: centerScrollY });
-
-      // Set initial container size
-      setContainerSize({
-        width: container.clientWidth,
-        height: container.clientHeight,
-      });
-    }
-  }, []);
-
-  // --- Resize Observer ---
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        setContainerSize({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
-        });
-      }
-    });
-
-    resizeObserver.observe(container);
-    return () => resizeObserver.unobserve(container);
-  }, []);
-
-  // --- Scroll Handler ---
-  const handleScroll = useCallback(
-    (e) => {
-      if (!isDragging) {
-        setScrollPos({
-          x: e.target.scrollLeft,
-          y: e.target.scrollTop,
-        });
-      }
-    },
-    [isDragging],
-  );
-
-  // --- Drag Handlers ---
-  const onDragStart = useCallback(
-    (e) => {
-      if (!isDraggable || !containerRef.current) return;
-      e.preventDefault();
-      setIsDragging(true);
-      dragStartPos.current = { x: e.clientX, y: e.clientY };
-      dragStartScroll.current = {
-        x: containerRef.current.scrollLeft,
-        y: containerRef.current.scrollTop,
-      };
-      containerRef.current.classList.add("cursor-grabbing");
-    },
-    [isDraggable],
-  );
-
-  const onDragMove = useCallback(
-    (e) => {
-      if (!isDragging || !containerRef.current) return;
-      e.preventDefault();
-      const dx = e.clientX - dragStartPos.current.x;
-      const dy = e.clientY - dragStartPos.current.y;
-
-      const newScrollLeft = dragStartScroll.current.x - dx;
-      const newScrollTop = dragStartScroll.current.y - dy;
-
-      containerRef.current.scrollLeft = newScrollLeft;
-      containerRef.current.scrollTop = newScrollTop;
-
-      // Manually update scrollPos state while dragging
-      setScrollPos({ x: newScrollLeft, y: newScrollTop });
-    },
-    [isDragging],
-  );
-
-  const onDragEnd = useCallback(() => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    if (containerRef.current) {
-      containerRef.current.classList.remove("cursor-grabbing");
-    }
-  }, [isDragging]);
-
-  // --- Visible Item Calculation ---
-  const visibleItems = useMemo(() => {
-    if (containerSize.width === 0 || numItems === 0) {
-      return [];
-    }
-
-    // Calculate the range of items to render
-    const startCol = Math.floor(scrollPos.x / ITEM_WIDTH) - BUFFER;
-    const startRow = Math.floor(scrollPos.y / ITEM_HEIGHT) - BUFFER;
-
-    const visibleCols =
-      Math.ceil(containerSize.width / ITEM_WIDTH) + 2 * BUFFER;
-    const visibleRows =
-      Math.ceil(containerSize.height / ITEM_HEIGHT) + 2 * BUFFER;
-
-    const endCol = startCol + visibleCols;
-    const endRow = startRow + visibleRows;
-
-    const rendered = [];
-
-    for (let r = startRow; r <= endRow; r++) {
-      for (let c = startCol; c <= endCol; c++) {
-        // Calculate the item index from the finite 'items' array
-        // Use a robust modulo operator for negative numbers
-        const itemColIndex =
-          ((c % numColsToTile) + numColsToTile) % numColsToTile;
-        const itemRowIndex =
-          ((r % numRowsToTile) + numRowsToTile) % numRowsToTile;
-        let itemIndex =
-          (itemRowIndex * numColsToTile + itemColIndex) % numItems;
-
-        // Ensure index is valid (it might be out of bounds if numItems is not a perfect grid)
-        if (itemIndex >= numItems) {
-          itemIndex = itemIndex % numItems;
-        }
-
-        const item = items[itemIndex];
-
-        if (!item) continue; // Skip if item is somehow undefined
-
-        const style = {
-          position: "absolute",
-          left: c * ITEM_WIDTH,
-          top: r * ITEM_HEIGHT,
-          width: ITEM_WIDTH,
-          height: ITEM_HEIGHT,
-        };
-
-        rendered.push(
-          <div
-            key={`${r}-${c}`}
-            style={style}
-            className="flex items-center justify-center overflow-hidden rounded-lg border border-dashed border-blue-800 bg-gray-800/50 p-2"
-          >
-            <div className="text-center">
-              {item.content}
-              <div className="mt-1 font-mono text-xs text-blue-500/50">
-                ({r}, {c})
-              </div>
-            </div>
-          </div>,
-        );
-      }
-    }
-    return rendered;
-  }, [scrollPos, containerSize, items, numItems, numColsToTile, numRowsToTile]);
-
-  return (
-    <div
-      ref={containerRef}
-      className={`relative h-full w-full overflow-scroll rounded-lg bg-gray-900 ${isDraggable ? "cursor-grab" : ""}`}
-      onScroll={handleScroll}
-      onMouseDown={onDragStart}
-      onMouseMove={onDragMove}
-      onMouseUp={onDragEnd}
-      onMouseLeave={onDragEnd}
-    >
-      {/* 1. The Sizer: This invisible element creates the huge scrollable area */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: `${VIRTUAL_SIZE}px`,
-          height: `${VIRTUAL_SIZE}px`,
-          pointerEvents: "none", // Don't let it interfere with mouse events
-        }}
-      />
-      {/* 2. The Content: Rendered items are positioned absolutely within the sizer */}
-      {visibleItems}
-    </div>
-  );
-}
-
-// --- Main App Component (Example Usage) ---
 export default function Animals() {
-  const [isDraggable, setIsDraggable] = useState(true);
-
-  // Sample items to be tiled
-  const sampleItems = [
-    { id: "a", content: "Item A" },
-    { id: "b", content: "Item B" },
-    { id: "c", content: "Item C" },
-    { id: "d", content: "Item D" },
-    { id: "e", content: "Item E" },
-    { id: "f", content: "Item F" },
-    { id: "g", content: "Item G" },
-    { id: "h", content: "Item H" },
-    { id: "i", content: "Item I" },
-  ];
-
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center bg-gray-950 p-8 font-sans text-white">
-      <h1 className="mb-4 text-3xl font-bold text-blue-300">
-        Infinite Draggable Grid
-      </h1>
-      <p className="mb-6 max-w-lg text-center text-gray-400">
-        Scroll in any direction. The grid is populated by infinitely tiling a
-        finite set of items. You can also drag to scroll if enabled.
-      </p>
-
-      {/* --- Toggle for Draggable Prop --- */}
-      <div className="mb-6">
-        <label className="flex cursor-pointer items-center space-x-3">
-          <input
-            type="checkbox"
-            checked={isDraggable}
-            onChange={(e) => setIsDraggable(e.target.checked)}
-            className="h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-500 ring-offset-gray-950 focus:ring-blue-600"
-          />
-          <span className="text-gray-200">Enable Drag-to-Scroll</span>
-        </label>
+    <main className="relative flex h-screen w-full items-center justify-center bg-white font-sans">
+      <div className="fixed top-6 left-6 z-10 w-fit">
+        <Link
+          href="/"
+          className="inline-flex gap-2 rounded-full bg-black/42 px-6 py-3 font-balsamiq-sans text-xl font-semibold text-white backdrop-blur-sm"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            height="24"
+            width="24"
+            aria-hidden
+          >
+            <g>
+              <path
+                fill="#79ee8d"
+                fillRule="evenodd"
+                d="M10.352777142857141 2.217325714285714c0.9808457142857142 -0.6707262857142857 2.313754285714286 -0.6707245714285713 3.2946 0.00001714285714285714l1.137582857142857 0.777942857142857C18.1464 5.294057142857143 21.032228571428572 8.117691428571428 23.303485714285713 11.33724l0.36479999999999996 0.5173199999999999c0.44657142857142856 0.6329828571428572 0.4150285714285714 1.39488 0.06685714285714285 1.9653942857142854 -0.3408 0.5583085714285715 -0.9637714285714286 0.91536 -1.6697142857142855 0.91536h-0.9728571428571429c0.051257142857142855 1.5911657142857143 -0.03857142857142857 3.500571428571428 -0.27377142857142855 4.875085714285714 -0.27685714285714286 1.6186285714285713 -1.7735999999999998 2.6753142857142858 -3.3668571428571425 2.6753142857142858H6.548194285714286c-1.5932914285714286 0 -3.09 -1.0566857142857142 -3.3668571428571425 -2.6753142857142858 -0.23509714285714287 -1.3745142857142856 -0.32495999999999997 -3.28392 -0.2737885714285714 -4.875085714285714h-0.9730114285714286c-0.7059582857142856 0 -1.328946857142857 -0.3570514285714285 -1.6697485714285714 -0.9153771428571427 -0.34824154285714287 -0.5705142857142856 -0.3797348571428571 -1.3324114285714286 0.06679885714285715 -1.9653942857142854l0.3649988571428571 -0.5174057142857142C2.9677371428571426 8.117657142857142 5.853548571428571 5.294074285714285 9.21504 2.9953714285714286l1.1377371428571428 -0.7780457142857142Z"
+                clipRule="evenodd"
+                strokeWidth="1.7143"
+              ></path>
+              <path
+                fill="#0c098c"
+                fillRule="evenodd"
+                d="M10.352777142857141 2.217325714285714c0.9808457142857142 -0.6707262857142857 2.313754285714286 -0.6707245714285713 3.2946 0.00001714285714285714l1.137582857142857 0.777942857142857C18.1464 5.294057142857143 21.032228571428572 8.117691428571428 23.303485714285713 11.33724l0.36479999999999996 0.5173199999999999c0.44657142857142856 0.6329828571428572 0.4150285714285714 1.39488 0.06685714285714285 1.9653942857142854 -0.3408 0.5583085714285715 -0.9637714285714286 0.91536 -1.6697142857142855 0.91536h-0.9728571428571429c0.051257142857142855 1.5911657142857143 -0.03857142857142857 3.500571428571428 -0.27377142857142855 4.875085714285714 -0.27685714285714286 1.6186285714285713 -1.7735999999999998 2.6753142857142858 -3.3668571428571425 2.6753142857142858H6.548194285714286c-1.5932914285714286 0 -3.09 -1.0566857142857142 -3.3668571428571425 -2.6753142857142858 -0.23509714285714287 -1.3745142857142856 -0.32495999999999997 -3.28392 -0.2737885714285714 -4.875085714285714h-0.9730114285714286c-0.7059582857142856 0 -1.328946857142857 -0.3570514285714285 -1.6697485714285714 -0.9153771428571427 -0.34824154285714287 -0.5705142857142856 -0.3797348571428571 -1.3324114285714286 0.06679885714285715 -1.9653942857142854l0.3649988571428571 -0.5174057142857142C2.9677371428571426 8.117657142857142 5.853548571428571 5.294074285714285 9.21504 2.9953714285714286l1.1377371428571428 -0.7780457142857142Zm2.084982857142857 1.7688342857142856c-0.25153714285714285 -0.17202857142857142 -0.6238457142857142 -0.17202857142857142 -0.8754000000000001 0l-1.1377371428571428 0.7780285714285713c-3.15864 2.1599999999999997 -5.858588571428571 4.80516 -7.977017142857143 7.808177142857144l-0.014194285714285711 0.02009142857142857h1.610245714285714c0.3011142857142857 0 0.5883257142857142 0.12670285714285714 0.7913142857142856 0.34909714285714283 0.20300571428571426 0.22237714285714286 0.3030685714285714 0.5199085714285714 0.2756742857142857 0.8197714285714286 -0.14257714285714285 1.561405714285714 -0.07865142857142857 3.958902857142857 0.18288 5.487874285714286 0.07436571428571428 0.4347428571428571 0.5402742857142857 0.8936571428571428 1.2546685714285715 0.8936571428571428h2.164285714285714V16.003011428571426c0 -1.8155485714285713 1.471782857142857 -3.2873314285714286 3.2873314285714286 -3.2873314285714286 1.8155314285714284 0 3.2873142857142854 1.471782857142857 3.2873142857142854 3.2873314285714286V20.142857142857142h2.1648171428571428c0.7143428571428572 0 1.1802857142857142 -0.45891428571428566 1.2546857142857142 -0.8936571428571428 0.2616 -1.5289714285714284 0.32554285714285713 -3.926468571428571 0.1829142857142857 -5.487874285714286 -0.027428571428571427 -0.2998628571428571 0.07268571428571428 -0.5973942857142857 0.2756571428571428 -0.8197885714285714 0.20297142857142858 -0.22237714285714286 0.49011428571428567 -0.34908 0.7913142857142856 -0.34908h1.6100571428571429l-0.014228571428571427 -0.020005714285714283c-2.118342857142857 -3.003085714285714 -4.818325714285714 -5.648297142857143 -7.976982857142858 -7.808348571428572l-1.1376 -0.777942857142857Z"
+                clipRule="evenodd"
+                strokeWidth="1.7143"
+              ></path>
+            </g>
+          </svg>
+          Home
+        </Link>
       </div>
 
-      {/* --- The Grid Component --- */}
-      <div className="h-3/4 w-full max-w-6xl rounded-xl border border-blue-900/50 shadow-2xl shadow-blue-900/10">
-        <InfiniteGrid items={sampleItems} isDraggable={isDraggable} />
+      <div className="h-full w-full text-black">
+        <InfiniteGrid items={animalsData} isDraggable />
       </div>
-    </div>
+    </main>
   );
 }
