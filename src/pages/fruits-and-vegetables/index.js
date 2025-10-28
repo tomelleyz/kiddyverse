@@ -1,8 +1,8 @@
 import InfiniteGrid from "@/components/InfiniteGrid";
-import { animalsData } from "@/animal-images-data";
 import Link from "next/link";
+import { fruitsAndVegetablesData } from "@/fruits-and-vegetables-image-data";
 
-export default function Animals() {
+export default function FruitsAndVegetables() {
   return (
     <main className="relative flex h-screen w-full items-center justify-center bg-white font-sans">
       <div className="fixed top-6 left-6 z-10 w-fit">
@@ -40,7 +40,7 @@ export default function Animals() {
       </div>
 
       <div className="h-full w-full text-black">
-        <InfiniteGrid items={animalsData} isDraggable />
+        <InfiniteGrid items={fruitsAndVegetablesData} isDraggable />
       </div>
     </main>
   );

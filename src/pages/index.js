@@ -19,7 +19,7 @@ export default function Home() {
           <Link href="/animals" className="col-span-2 border p-3">
             Animals
           </Link>
-          <Link href="/fruits" className="col-span-2 border p-3">
+          <Link href="/fruits-and-vegetables" className="col-span-2 border p-3">
             Fruits
           </Link>
           <Link
