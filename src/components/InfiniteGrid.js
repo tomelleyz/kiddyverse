@@ -191,7 +191,7 @@ export default function InfiniteGrid({ items, isDraggable = false }) {
           <div
             key={`${r}-${c}`}
             style={style}
-            className="flex items-center justify-center overflow-hidden select-none"
+            className="flex items-center justify-center overflow-hidden"
           >
             <div className="relative size-40">
               <Image

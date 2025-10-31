@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";

@@ -29,6 +29,12 @@ import duck from "@/assets/animals/duck.png";
 import camel from "@/assets/animals/camel.png";
 import donkey from "@/assets/animals/donkey.png";
 import snail from "@/assets/animals/snail.png";
+import goat from "@/assets/animals/goat.png";
+import hippopotamus from "@/assets/animals/hippopotamus.png";
+import kangaroo from "@/assets/animals/kangaroo.png";
+import sheep from "@/assets/animals/sheep.png";
+import rhinoceros from "@/assets/animals/rhinoceros.png";
+import crab from "@/assets/animals/crab.png";
 
 export const animalsData = [
   { id: 1, src: lion, alt: "Lion" },
@@ -62,4 +68,10 @@ export const animalsData = [
   { id: 28, src: camel, alt: "Camel" },
   { id: 29, src: donkey, alt: "Donkey" },
   { id: 30, src: snail, alt: "Snail" },
+  { id: 31, src: goat, alt: "Goat" },
+  { id: 32, src: hippopotamus, alt: "Hippopotamus" },
+  { id: 33, src: kangaroo, alt: "Kangaroo" },
+  { id: 34, src: sheep, alt: "Sheep" },
+  { id: 35, src: rhinoceros, alt: "Rhinoceros" },
+  { id: 36, src: crab, alt: "Crab" },
 ];

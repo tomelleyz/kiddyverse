@@ -12,17 +12,17 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
-    <AnimatePresence mode="popLayout" initial={false}>
-      <motion.div
-        key={router.route}
-        initial="hidden"
-        animate="enter"
-        exit="exit"
-        variants={variants}
-        transition={{ ease: "easeOut", duration: 0.3 }}
-      >
-        <Component {...pageProps} />
-      </motion.div>
-    </AnimatePresence>
+    // <AnimatePresence mode="popLayout" initial={false}>
+    //   <motion.div
+    //     key={router.route}
+    //     initial="hidden"
+    //     animate="enter"
+    //     exit="exit"
+    //     variants={variants}
+    //     transition={{ ease: "easeOut", duration: 0.3 }}
+    //   >
+    <Component {...pageProps} />
+    //   </motion.div>
+    // </AnimatePresence>
   );
 }

@@ -12,6 +12,8 @@ import scissors from "@/assets/other-objects/scissors.png";
 import star from "@/assets/other-objects/star.png";
 import tree from "@/assets/other-objects/tree.png";
 import wristwatch from "@/assets/other-objects/wristwatch.png";
+import car from "@/assets/other-objects/car.png";
+import motorcycle from "@/assets/other-objects/motorcycle.png";
 
 export const otherObjectsData = [
   { id: 1, src: aeroplane, alt: "Aeroplane" },
@@ -28,4 +30,6 @@ export const otherObjectsData = [
   { id: 12, src: star, alt: "Star" },
   { id: 13, src: tree, alt: "Tree" },
   { id: 14, src: wristwatch, alt: "Wristwatch" },
+  { id: 15, src: car, alt: "Car" },
+  { id: 16, src: motorcycle, alt: "Motorcycle" },
 ];

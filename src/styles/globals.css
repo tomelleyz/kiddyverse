@@ -6,8 +6,23 @@
 }
 
 @theme {
+  /* --color-*: initial; */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-purple-100: #dcd5fc;
+  --color-purple-200: #dca7fb;
+  --color-purple-300: #c084fc;
+  --color-blue-100: #e0f7fa;
+  --color-blue-200: #a7e4ff;
+  --color-blue-300: #95ddff;
+  --color-green-100: #b3f3d3;
+  --color-green-200: #7eea97;
+  --color-green-300: #4ade80;
+  --color-yellow-100: #fadeb1;
+  --color-yellow-200: #fac455;
+
   --font-balsamiq-sans: "Balsamiq Sans", sans-serif;
 }
 
