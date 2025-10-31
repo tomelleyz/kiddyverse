@@ -40,8 +40,8 @@ export default function Home() {
         <meta name="theme-color" content="#e0f7fa" />
       </Head>
 
-      <main className="lg: relative min-h-dvh bg-blue-100 px-4 py-16 sm:py-[120px]">
-        <header className="fixed top-0 left-0 w-full bg-transparent px-4 py-3 text-lg font-semibold">
+      <main className="relative min-h-dvh bg-blue-100 px-4 py-24 sm:py-[120px]">
+        <header className="fixed top-0 left-0 w-full bg-transparent px-4 py-6 text-lg font-semibold lg:p-8">
           KID&apos;S CORNER
         </header>
 
@@ -49,7 +49,7 @@ export default function Home() {
         <div className="absolute bottom-8 left-4 size-[80px] rotate-45 rounded-xl bg-[#EECECF] lg:size-[140px]"></div>
         <div className="absolute right-1/12 bottom-[20%] size-12 bg-purple-100 [clip-path:polygon(50%_0%,_0%_100%,_100%_100%)]"></div>
 
-        <div className="relative mx-auto max-w-3xl rounded-xl bg-white px-4 py-10 text-center shadow-lg lg:px-8 lg:pt-12 lg:pb-8">
+        <div className="relative mx-auto max-w-3xl rounded-xl bg-white px-4 py-10 text-center shadow-md lg:px-8 lg:pt-12 lg:pb-8">
           <div className="mb-6 lg:mb-8">
             <h1 className="text-2xl font-semibold lg:text-3xl">
               Choose your adventure
@@ -58,7 +58,7 @@ export default function Home() {
 
           <motion.div
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
             variants={containerAnimation}
             viewport={{ once: true }}
             className="grid w-full grid-cols-1 gap-6 sm:grid-cols-4"
