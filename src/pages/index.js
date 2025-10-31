@@ -1,11 +1,34 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 import palette from "@/assets/everyday-objects/palette.png";
 import star from "@/assets/everyday-objects/star.png";
 import lion from "@/assets/animals/lion.png";
 import apple from "@/assets/fruits-and-vegetables/apple.png";
 import car from "@/assets/everyday-objects/car.png";
+
+const containerAnimation = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+export const itemAnimation = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "tween", ease: "easeOut", duration: 0.3 },
+  },
+};
 
 export default function Home() {
   return (
@@ -27,62 +50,107 @@ export default function Home() {
         <div className="absolute right-1/12 bottom-[20%] size-12 bg-purple-100 [clip-path:polygon(50%_0%,_0%_100%,_100%_100%)]"></div>
 
         <div className="relative mx-auto max-w-3xl rounded-xl bg-white px-4 py-10 text-center shadow-lg lg:px-8 lg:pt-12 lg:pb-8">
-          <h1 className="mb-4 text-3xl font-semibold lg:mb-8">
-            Select an option
-          </h1>
-
-          <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-4">
-            <Link
-              href="/colours"
-              className="col-span-full flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-span-2"
-            >
-              <div className="relative size-16 lg:size-20">
-                <Image src={palette} alt="Palette" priority />
-              </div>
-              <h3 className="text-xl font-semibold">Colours</h3>
-              <p>Learn red, green, blue and more!</p>
-            </Link>
-            <Link
-              href="/shapes"
-              className="col-span-full flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-span-2"
-            >
-              <div className="relative size-16 lg:size-20">
-                <Image src={star} alt="Star" priority />
-              </div>
-              <h3 className="text-xl font-semibold">Shapes</h3>
-              <p>Discover circles, squares and triangles.</p>
-            </Link>
-            <Link
-              href="/animals"
-              className="col-span-full flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-span-2"
-            >
-              <div className="relative size-16 lg:size-20">
-                <Image src={lion} alt="Lion" priority />
-              </div>
-              <h3 className="text-xl font-semibold">Animals</h3>
-              <p>Meet lions, monkeys and puppies!</p>
-            </Link>
-            <Link
-              href="/fruits-and-vegetables"
-              className="col-span-full flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-span-2"
-            >
-              <div className="relative size-16 lg:size-20">
-                <Image src={apple} alt="Apple" priority />
-              </div>
-              <h3 className="text-xl font-semibold">Fruits & Vegetables</h3>
-              <p>Yummy apples, carrots and bananas.</p>
-            </Link>
-            <Link
-              href="/everyday-objects"
-              className="flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-start-2 sm:col-end-4"
-            >
-              <div className="relative size-16 lg:size-20">
-                <Image src={car} alt="Car" priority />
-              </div>
-              <h3 className="text-xl font-semibold">Everyday objects</h3>
-              <p>Cars, balls, bicycles and much more.</p>
-            </Link>
+          <div className="mb-6 lg:mb-8">
+            <h1 className="text-2xl font-semibold lg:text-3xl">
+              Choose your adventure
+            </h1>
           </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={containerAnimation}
+            viewport={{ once: true }}
+            className="grid w-full grid-cols-1 gap-6 sm:grid-cols-4"
+          >
+            <motion.div
+              variants={itemAnimation}
+              className="col-span-full sm:col-span-2"
+            >
+              <Link
+                href="/colours"
+                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+              >
+                <div className="relative size-16 lg:size-20">
+                  <Image src={palette} alt="Palette" priority />
+                </div>
+                <h3 className="text-xl font-semibold">Colours</h3>
+                <p className="text-gray-500">
+                  Learn red, green, blue and more!
+                </p>
+              </Link>
+            </motion.div>
+            <motion.div
+              variants={itemAnimation}
+              className="col-span-full sm:col-span-2"
+            >
+              <Link
+                href="/shapes"
+                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+              >
+                <div className="relative size-16 lg:size-20">
+                  <Image src={star} alt="Star" priority />
+                </div>
+                <h3 className="text-xl font-semibold">Shapes</h3>
+                <p className="text-gray-500">
+                  Discover circles, squares and triangles.
+                </p>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              variants={itemAnimation}
+              className="col-span-full sm:col-span-2"
+            >
+              <Link
+                href="/animals"
+                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+              >
+                <div className="relative size-16 lg:size-20">
+                  <Image src={lion} alt="Lion" priority />
+                </div>
+                <h3 className="text-xl font-semibold">Animals</h3>
+                <p className="text-gray-500">
+                  Meet lions, monkeys and puppies!
+                </p>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              variants={itemAnimation}
+              className="col-span-full sm:col-span-2"
+            >
+              <Link
+                href="/fruits-and-vegetables"
+                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+              >
+                <div className="relative size-16 lg:size-20">
+                  <Image src={apple} alt="Apple" priority />
+                </div>
+                <h3 className="text-xl font-semibold">Fruits & Vegetables</h3>
+                <p className="text-gray-500">
+                  Yummy apples, carrots and bananas.
+                </p>
+              </Link>
+            </motion.div>
+            <motion.div
+              variants={itemAnimation}
+              className="sm:col-start-2 sm:col-end-4"
+            >
+              <Link
+                href="/everyday-objects"
+                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+              >
+                <div className="relative size-16 lg:size-20">
+                  <Image src={car} alt="Car" priority />
+                </div>
+                <h3 className="text-xl font-semibold">Everyday objects</h3>
+                <p className="text-gray-500">
+                  Cars, balls, bicycles and much more.
+                </p>
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </main>
     </>
