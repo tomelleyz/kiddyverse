@@ -70,7 +70,7 @@ export default function Home() {
                 <Image src={apple} alt="Apple" priority />
               </div>
               <h3 className="text-xl font-semibold">Fruits & Vegetables</h3>
-              <p>Meet lions, monkeys and puppies!</p>
+              <p>Yummy apples, carrots and bananas.</p>
             </Link>
             <Link
               href="/everyday-objects"
@@ -80,7 +80,7 @@ export default function Home() {
                 <Image src={car} alt="Car" priority />
               </div>
               <h3 className="text-xl font-semibold">Everyday objects</h3>
-              <p>Meet lions, monkeys and puppies!</p>
+              <p>Cars, balls, bicycles and much more.</p>
             </Link>
           </div>
         </div>
