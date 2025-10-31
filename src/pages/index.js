@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import palette from "@/assets/other-objects/palette.png";
-import star from "@/assets/other-objects/star.png";
+import palette from "@/assets/everyday-objects/palette.png";
+import star from "@/assets/everyday-objects/star.png";
 import lion from "@/assets/animals/lion.png";
 import apple from "@/assets/fruits-and-vegetables/apple.png";
-import car from "@/assets/other-objects/car.png";
+import car from "@/assets/everyday-objects/car.png";
 
 export default function Home() {
   return (

@@ -1,5 +1,5 @@
 import InfiniteGrid from "@/components/InfiniteGrid";
-import { otherObjectsData } from "@/other-objects-image-data";
+import { everydayObjectsData } from "@/everyday-objects-image-data";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -48,7 +48,7 @@ export default function EverydayObjects() {
         </div>
 
         <div className="h-full w-full text-black">
-          <InfiniteGrid items={otherObjectsData} isDraggable />
+          <InfiniteGrid items={everydayObjectsData} isDraggable />
         </div>
       </main>
     </>
