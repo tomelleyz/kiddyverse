@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
         animate="enter"
         exit="exit"
         variants={variants}
-        transition={{ ease: "easeOut", duration: 0.3 }}
+        transition={{ ease: "easeOut", duration: 0.2 }}
       >
         <Component {...pageProps} />
       </motion.div>
