@@ -3,7 +3,7 @@ import { otherObjectsData } from "@/other-objects-image-data";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function OtherObjects() {
+export default function EverydayObjects() {
   return (
     <>
       <Head>

@@ -37,7 +37,7 @@ export default function Home() {
               className="col-span-full flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-span-2"
             >
               <div className="relative size-16 lg:size-20">
-                <Image src={palette} alt="Palette" />
+                <Image src={palette} alt="Palette" priority />
               </div>
               <h3 className="text-xl font-semibold">Colours</h3>
               <p>Learn red, green, blue and more!</p>
@@ -47,7 +47,7 @@ export default function Home() {
               className="col-span-full flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-span-2"
             >
               <div className="relative size-16 lg:size-20">
-                <Image src={star} alt="Star" />
+                <Image src={star} alt="Star" priority />
               </div>
               <h3 className="text-xl font-semibold">Shapes</h3>
               <p>Discover circles, squares and triangles.</p>
@@ -57,7 +57,7 @@ export default function Home() {
               className="col-span-full flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-span-2"
             >
               <div className="relative size-16 lg:size-20">
-                <Image src={lion} alt="Lion" />
+                <Image src={lion} alt="Lion" priority />
               </div>
               <h3 className="text-xl font-semibold">Animals</h3>
               <p>Meet lions, monkeys and puppies!</p>
@@ -67,19 +67,19 @@ export default function Home() {
               className="col-span-full flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-span-2"
             >
               <div className="relative size-16 lg:size-20">
-                <Image src={apple} alt="Apple" />
+                <Image src={apple} alt="Apple" priority />
               </div>
               <h3 className="text-xl font-semibold">Fruits & Vegetables</h3>
               <p>Meet lions, monkeys and puppies!</p>
             </Link>
             <Link
-              href="/other-objects"
+              href="/everyday-objects"
               className="flex flex-col items-center justify-center gap-3 rounded-xl border p-3 sm:col-start-2 sm:col-end-4"
             >
               <div className="relative size-16 lg:size-20">
-                <Image src={car} alt="Car" />
+                <Image src={car} alt="Car" priority />
               </div>
-              <h3 className="text-xl font-semibold">Other objects</h3>
+              <h3 className="text-xl font-semibold">Everyday objects</h3>
               <p>Meet lions, monkeys and puppies!</p>
             </Link>
           </div>
