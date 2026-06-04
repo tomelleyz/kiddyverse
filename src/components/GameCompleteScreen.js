@@ -17,16 +17,16 @@ export default function GameCompleteScreen({
       <p className="mb-12 text-xl text-gray-700">
         Your Score: {score} out of {all.length}
       </p>
-      <div className="flex flex-col-reverse flex-wrap justify-center gap-6 sm:flex-row">
+      <div className="flex flex-col flex-wrap justify-center gap-6 md:flex-row">
         <Link
           href={gameType === "shapes" ? "/colours" : "/shapes"}
-          className="cursor-pointer rounded-full bg-[#79ee8d] px-8 py-3 text-xl font-semibold text-white transition-transform duration-300 hover:scale-105 active:scale-100 sm:w-[290px]"
+          className="order-last cursor-pointer rounded-full bg-[#79ee8d] px-8 py-3 text-xl font-semibold text-white transition-transform active:scale-[0.98] md:order-none md:min-w-[290px]"
         >
           Play {gameType === "shapes" ? "Colour Matching" : "Shape Puzzle"}
         </Link>
         <button
           onClick={() => resetGame()}
-          className="cursor-pointer rounded-full bg-[#0c098c] px-8 py-3 text-xl font-semibold text-white transition-transform duration-300 hover:scale-105 active:scale-100 sm:w-[290px]"
+          className="cursor-pointer rounded-full bg-[#0c098c] px-8 py-3 text-xl font-semibold text-white transition-transform active:scale-[0.98] md:min-w-[290px]"
         >
           Play {gameType === "shapes" ? "Shape Puzzle" : "Colour Matching"}{" "}
           Again
