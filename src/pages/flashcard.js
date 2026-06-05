@@ -1,18 +1,59 @@
-import InfiniteGrid from "@/components/InfiniteGrid";
-import { everydayObjectsData } from "@/everyday-objects-image-data";
 import Head from "next/head";
 import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
 
-export default function EverydayObjects() {
+const items = [
+  {
+    id: "card-1",
+    title: "Card 1",
+    subtitle: "This is the subtitle",
+    body: "Some words about this card. This is the subtitle text or sometimes also called subheading.",
+  },
+  {
+    id: "card-2",
+    title: "Card 2",
+    subtitle: "This is the subtitle",
+    body: "Some words about this card. This is the subtitle text or sometimes also called subheading.",
+  },
+  {
+    id: "card-3",
+    title: "Card 3",
+    subtitle: "This is the subtitle",
+    body: "Some words about this card. This is the subtitle text or sometimes also called subheading.",
+  },
+  {
+    id: "card-4",
+    title: "Card 4",
+    subtitle: "This is the subtitle",
+    body: "Some words about this card. This is the subtitle text or sometimes also called subheading.",
+  },
+  {
+    id: "card-5",
+    title: "Card 5",
+    subtitle: "This is the subtitle",
+    body: "Some words about this card. This is the subtitle text or sometimes also called subheading.",
+  },
+  {
+    id: "card-6",
+    title: "Card 6",
+    subtitle: "This is the subtitle",
+    body: "Some words about this card. This is the subtitle text or sometimes also called subheading.",
+  },
+];
+export default function Flashcard() {
+  const [selectedId, setSelectedId] = useState(null);
+  const activeItem = items.find((item) => item.id === selectedId);
+
   return (
     <>
       <Head>
-        <title>Identify Different Objects</title>
+        <title>Flashcard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Identify different objects" />
+        <meta name="description" content="Identify animals" />
       </Head>
 
-      <main className="relative flex h-screen w-full items-center justify-center bg-[#F5F7F8]">
+      <main className="relative flex h-screen w-full items-center justify-center bg-blue-100">
         <div className="fixed top-6 left-6 z-10 w-fit">
           <Link
             href="/"
@@ -47,8 +88,40 @@ export default function EverydayObjects() {
           </Link>
         </div>
 
-        <div className="h-full w-full">
-          <InfiniteGrid items={everydayObjectsData} isDraggable />
+        <div className="grid w-[500px] grid-cols-3 gap-4">
+          {/* {animalsData.map((animal) => (
+            <div key={animal.id} className="relative h-full w-full">
+              <Image src={animal.src} alt={animal.alt} />
+            </div>
+          ))} */}
+
+          {items.map((item) => (
+            <motion.div
+              key={item.id}
+              layoutId={item.id}
+              onClick={() => setSelectedId(item.id)}
+              className="h-40 w-full rounded-lg border border-gray-200 bg-white"
+            >
+              <motion.h2>{item.title}</motion.h2>
+              <motion.h5>{item.subtitle}</motion.h5>
+            </motion.div>
+          ))}
+
+          <AnimatePresence>
+            {activeItem ? (
+              <motion.div
+                layoutId={selectedId}
+                onClick={() => setSelectedId(null)}
+                className="fixed top-1/2 left-1/2 z-10 size-60 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-amber-100"
+              >
+                <motion.h5>{activeItem.subtitle}</motion.h5>
+                <motion.h2>{activeItem.title}</motion.h2>
+                <motion.button onClick={() => setSelectedId(null)}>
+                  Close
+                </motion.button>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
         </div>
       </main>
     </>

@@ -47,7 +47,7 @@ export default function FruitsAndVegetables() {
           </Link>
         </div>
 
-        <div className="h-full w-full text-black">
+        <div className="h-full w-full">
           <InfiniteGrid items={fruitsAndVegetablesData} isDraggable />
         </div>
       </main>
