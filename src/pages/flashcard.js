@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 
 const items = [
   {
@@ -53,7 +54,7 @@ export default function Flashcard() {
         <meta name="description" content="Identify animals" />
       </Head>
 
-      <main className="relative flex h-screen w-full items-center justify-center bg-blue-100">
+      <main className="relative flex h-screen w-full items-center justify-center bg-[#fcfbfc]">
         <div className="fixed top-6 left-6 z-10 w-fit">
           <Link
             href="/"
@@ -88,41 +89,66 @@ export default function Flashcard() {
           </Link>
         </div>
 
-        <div className="grid w-[500px] grid-cols-3 gap-4">
-          {/* {animalsData.map((animal) => (
+        <Dialog.Root
+          open={Boolean(selectedId)}
+          onOpenChange={(open) => {
+            if (!open) {
+              setSelectedId(null);
+            }
+          }}
+        >
+          <div className="grid w-[500px] grid-cols-3 gap-4">
+            {/* {animalsData.map((animal) => (
             <div key={animal.id} className="relative h-full w-full">
               <Image src={animal.src} alt={animal.alt} />
             </div>
           ))} */}
-
-          {items.map((item) => (
-            <motion.div
-              key={item.id}
-              layoutId={item.id}
-              onClick={() => setSelectedId(item.id)}
-              className="h-40 w-full rounded-lg border border-gray-200 bg-white"
-            >
-              <motion.h2>{item.title}</motion.h2>
-              <motion.h5>{item.subtitle}</motion.h5>
-            </motion.div>
-          ))}
-
-          <AnimatePresence>
-            {activeItem ? (
-              <motion.div
-                layoutId={selectedId}
-                onClick={() => setSelectedId(null)}
-                className="fixed top-1/2 left-1/2 z-10 size-60 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-amber-100"
-              >
-                <motion.h5>{activeItem.subtitle}</motion.h5>
-                <motion.h2>{activeItem.title}</motion.h2>
-                <motion.button onClick={() => setSelectedId(null)}>
-                  Close
+            {items.map((item) => (
+              <Dialog.Trigger key={item.id} asChild>
+                <motion.button
+                  layoutId={item.id}
+                  onClick={() => setSelectedId(item.id)}
+                  className="h-40 w-full rounded-lg border border-gray-200 bg-white"
+                >
+                  <motion.h2>{item.title}</motion.h2>
+                  <motion.h5>{item.subtitle}</motion.h5>
                 </motion.button>
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
-        </div>
+              </Dialog.Trigger>
+            ))}
+
+            <AnimatePresence>
+              <Dialog.Portal>
+                {activeItem ? (
+                  <>
+                    <Dialog.Overlay className="fixed inset-0 z-10 bg-black/60 backdrop-blur-xs data-[state=open]:animate-fade-in"></Dialog.Overlay>
+                    <Dialog.Content asChild forceMount>
+                      <motion.div
+                        className="fixed inset-0 z-20 flex aspect-square h-full w-full items-center justify-center"
+                        onClick={() => setSelectedId(null)}
+                      >
+                        <motion.div
+                          layoutId={selectedId}
+                          onClick={() => setSelectedId(null)}
+                          className="overflow-hidden rounded-3xl bg-amber-100"
+                        >
+                          <Dialog.Title className="sr-only">Title</Dialog.Title>
+                          <Dialog.Description className="sr-only">
+                            Description
+                          </Dialog.Description>
+                          <motion.h5>{activeItem.subtitle}</motion.h5>
+                          <motion.h2>{activeItem.title}</motion.h2>
+                          <motion.button onClick={() => setSelectedId(null)}>
+                            Close
+                          </motion.button>
+                        </motion.div>
+                      </motion.div>
+                    </Dialog.Content>
+                  </>
+                ) : null}
+              </Dialog.Portal>
+            </AnimatePresence>
+          </div>
+        </Dialog.Root>
       </main>
     </>
   );

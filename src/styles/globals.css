@@ -24,6 +24,16 @@
   --color-yellow-200: #fac455;
 
   --font-balsamiq-sans: "Balsamiq Sans", sans-serif;
+  --animate-fade-in: fade-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 @font-face {
