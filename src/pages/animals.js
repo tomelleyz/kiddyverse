@@ -1,5 +1,5 @@
 import InfiniteGrid from "@/components/InfiniteGrid";
-import { animalsData } from "@/animal-images-data";
+import { animalsData } from "@/data/image-catalog";
 import Link from "next/link";
 import Head from "next/head";
 

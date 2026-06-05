@@ -1,5 +1,5 @@
 import InfiniteGrid from "@/components/InfiniteGrid";
-import { everydayObjectsData } from "@/everyday-objects-image-data";
+import { everydayObjectsData } from "@/data/image-catalog";
 import Head from "next/head";
 import Link from "next/link";
 

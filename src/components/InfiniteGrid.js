@@ -10,7 +10,7 @@ const BUFFER = 2; // Number of extra items to render on each side (top, bottom, 
 /**
  * @typedef {object} GridItem
  * @property {string | number} id
- * @property {React.ReactNode} src
+ * @property {string} src
  * @property {string} alt
  */
 
@@ -197,9 +197,9 @@ export default function InfiniteGrid({ items, isDraggable = false }) {
               <Image
                 src={item.src}
                 alt={item.alt}
-                // fill
-                // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                // className="object-contain object-center"
+                fill
+                sizes="160px"
+                className="object-contain object-center"
               />
             </div>
           </div>,

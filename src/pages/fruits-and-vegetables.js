@@ -1,6 +1,6 @@
 import InfiniteGrid from "@/components/InfiniteGrid";
 import Link from "next/link";
-import { fruitsAndVegetablesData } from "@/fruits-and-vegetables-image-data";
+import { fruitsAndVegetablesData } from "@/data/image-catalog";
 import Head from "next/head";
 
 export default function FruitsAndVegetables() {

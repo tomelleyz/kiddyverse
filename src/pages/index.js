@@ -2,11 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import palette from "@/assets/everyday-objects/palette.png";
-import star from "@/assets/everyday-objects/star.png";
-import lion from "@/assets/animals/lion.png";
-import apple from "@/assets/fruits-and-vegetables/apple.png";
-import car from "@/assets/everyday-objects/car.png";
+import { featuredImages } from "@/data/image-catalog";
 
 const containerAnimation = {
   hidden: {
@@ -74,7 +70,14 @@ export default function Home() {
                 className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
               >
                 <div className="relative size-16 lg:size-20">
-                  <Image src={palette} alt="Palette" priority />
+                  <Image
+                    src={featuredImages.palette.src}
+                    alt={featuredImages.palette.alt}
+                    fill
+                    sizes="(min-width: 1024px) 80px, 64px"
+                    className="object-contain object-center"
+                    priority
+                  />
                 </div>
                 <h3 className="text-xl font-semibold">Colours</h3>
                 <p className="text-gray-500">
@@ -91,7 +94,14 @@ export default function Home() {
                 className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
               >
                 <div className="relative size-16 lg:size-20">
-                  <Image src={star} alt="Star" priority />
+                  <Image
+                    src={featuredImages.star.src}
+                    alt={featuredImages.star.alt}
+                    fill
+                    sizes="(min-width: 1024px) 80px, 64px"
+                    className="object-contain object-center"
+                    priority
+                  />
                 </div>
                 <h3 className="text-xl font-semibold">Shapes</h3>
                 <p className="text-gray-500">
@@ -109,7 +119,14 @@ export default function Home() {
                 className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
               >
                 <div className="relative size-16 lg:size-20">
-                  <Image src={lion} alt="Lion" priority />
+                  <Image
+                    src={featuredImages.lion.src}
+                    alt={featuredImages.lion.alt}
+                    fill
+                    sizes="(min-width: 1024px) 80px, 64px"
+                    className="object-contain object-center"
+                    priority
+                  />
                 </div>
                 <h3 className="text-xl font-semibold">Animals</h3>
                 <p className="text-gray-500">
@@ -127,7 +144,14 @@ export default function Home() {
                 className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
               >
                 <div className="relative size-16 lg:size-20">
-                  <Image src={apple} alt="Apple" priority />
+                  <Image
+                    src={featuredImages.apple.src}
+                    alt={featuredImages.apple.alt}
+                    fill
+                    sizes="(min-width: 1024px) 80px, 64px"
+                    className="object-contain object-center"
+                    priority
+                  />
                 </div>
                 <h3 className="text-xl font-semibold">Fruits & Vegetables</h3>
                 <p className="text-gray-500">
@@ -144,7 +168,14 @@ export default function Home() {
                 className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
               >
                 <div className="relative size-16 lg:size-20">
-                  <Image src={car} alt="Car" priority />
+                  <Image
+                    src={featuredImages.car.src}
+                    alt={featuredImages.car.alt}
+                    fill
+                    sizes="(min-width: 1024px) 80px, 64px"
+                    className="object-contain object-center"
+                    priority
+                  />
                 </div>
                 <h3 className="text-xl font-semibold">Everyday objects</h3>
                 <p className="text-gray-500">
