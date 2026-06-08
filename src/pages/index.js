@@ -184,6 +184,26 @@ export default function Home() {
           </motion.div>
         </div>
       </main>
+
+      <footer className="flex flex-wrap items-center justify-center gap-1 bg-blue-100 px-4 pb-8 text-center text-xs text-gray-400">
+        <span>
+          Built with ❤️ by{" "}
+          <a
+            href="https://tomelleyz.github.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            Ola
+          </a>
+        </span>
+        &#8226;
+        <span>Designed for children aged 2–6</span>
+        &#8226;
+        <span>Parental guidance recommended</span>
+        &#8226;
+        <span>3D icons from thiings.co</span>
+      </footer>
     </>
   );
 }
