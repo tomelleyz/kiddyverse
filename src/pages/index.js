@@ -52,8 +52,6 @@ export default function Home() {
             </h1>
           </div>
 
-          <Link href="/flashcard">Flashcard</Link>
-
           <motion.div
             initial="hidden"
             animate="visible"

@@ -97,18 +97,13 @@ export default function Flashcard() {
             }
           }}
         >
-          <div className="grid w-[500px] grid-cols-3 gap-4">
-            {/* {animalsData.map((animal) => (
-            <div key={animal.id} className="relative h-full w-full">
-              <Image src={animal.src} alt={animal.alt} />
-            </div>
-          ))} */}
+          <div className="grid max-w-[500px] grid-cols-3 gap-4 rounded-xl">
             {items.map((item) => (
               <Dialog.Trigger key={item.id} asChild>
                 <motion.button
                   layoutId={item.id}
                   onClick={() => setSelectedId(item.id)}
-                  className="h-40 w-full rounded-lg border border-gray-200 bg-white"
+                  className="h-40 w-full rounded-xl border border-gray-200 bg-white"
                 >
                   <motion.h2>{item.title}</motion.h2>
                   <motion.h5>{item.subtitle}</motion.h5>
@@ -120,16 +115,16 @@ export default function Flashcard() {
               <Dialog.Portal>
                 {activeItem ? (
                   <>
-                    <Dialog.Overlay className="fixed inset-0 z-10 bg-black/60 backdrop-blur-xs data-[state=open]:animate-fade-in"></Dialog.Overlay>
-                    <Dialog.Content asChild forceMount>
+                    <Dialog.Overlay className="fixed inset-0 z-10 bg-black/50 backdrop-blur-xs data-[state=open]:animate-fade-in"></Dialog.Overlay>
+                    <Dialog.Content asChild>
                       <motion.div
-                        className="fixed inset-0 z-20 flex aspect-square h-full w-full items-center justify-center"
+                        className="fixed inset-0 z-20 flex h-full w-full items-center justify-center"
                         onClick={() => setSelectedId(null)}
                       >
                         <motion.div
                           layoutId={selectedId}
                           onClick={() => setSelectedId(null)}
-                          className="overflow-hidden rounded-3xl bg-amber-100"
+                          className="h-[600px] max-h-[80vh] w-[450px] max-w-[80vw] overflow-hidden rounded-3xl bg-white"
                         >
                           <Dialog.Title className="sr-only">Title</Dialog.Title>
                           <Dialog.Description className="sr-only">
