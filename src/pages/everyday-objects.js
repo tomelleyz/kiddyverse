@@ -48,7 +48,7 @@ export default function EverydayObjects() {
         </div>
 
         <div className="h-full w-full">
-          <InfiniteGrid items={everydayObjectsData} isDraggable={false} />
+          <InfiniteGrid items={everydayObjectsData} />
         </div>
       </main>
     </>

@@ -48,7 +48,7 @@ export default function Animals() {
         </div>
 
         <div className="h-full w-full">
-          <InfiniteGrid items={animalsData} isDraggable={false} />
+          <InfiniteGrid items={animalsData} />
         </div>
       </main>
     </>

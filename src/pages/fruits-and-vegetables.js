@@ -48,7 +48,7 @@ export default function FruitsAndVegetables() {
         </div>
 
         <div className="h-full w-full">
-          <InfiniteGrid items={fruitsAndVegetablesData} isDraggable={false} />
+          <InfiniteGrid items={fruitsAndVegetablesData} />
         </div>
       </main>
     </>
