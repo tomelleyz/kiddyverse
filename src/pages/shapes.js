@@ -1,7 +1,6 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const NoSSRGame = dynamic(() => import("@/components/ShapeGameScreen"), {
   ssr: false,
@@ -24,8 +23,6 @@ export default function Shapes() {
         <Header />
 
         <NoSSRGame />
-
-        <Footer />
       </main>
     </>
   );

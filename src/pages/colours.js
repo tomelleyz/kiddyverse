@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const NoSSRGame = dynamic(() => import("@/components/ColorGameScreen"), {
   ssr: false,
@@ -24,8 +23,6 @@ export default function Colours() {
         <Header />
 
         <NoSSRGame />
-
-        <Footer />
       </main>
     </>
   );

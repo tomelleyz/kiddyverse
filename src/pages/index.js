@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Kid&apos;s Corner</title>
+        <title>Kids&apos; Corner</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Explore and learn with fun games!" />
         <meta name="theme-color" content="#e0f7fa" />
@@ -38,7 +38,7 @@ export default function Home() {
 
       <main className="relative min-h-dvh bg-blue-100 px-4 py-24 sm:py-[120px]">
         <header className="fixed top-0 left-0 w-full bg-transparent px-4 py-6 text-lg font-semibold lg:p-8">
-          KID&apos;S CORNER
+          KIDS&apos; CORNER
         </header>
 
         <div className="absolute top-8 right-10 size-[60px] rounded-full bg-green-100 lg:size-[100px]"></div>
