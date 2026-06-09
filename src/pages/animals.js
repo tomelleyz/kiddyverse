@@ -7,9 +7,29 @@ export default function Animals() {
   return (
     <>
       <Head>
-        <title>Identify Animals</title>
+        <title>Kiddyverse | Identify animals</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Identify animals" />
+        <meta
+          name="description"
+          content="Learn to identify animals using flash cards!"
+        />
+
+        <link rel="canonical" href="https://kiddyverse.vercel.app/animals" />
+        <meta property="og:title" content="Kiddyverse | Identify animals" />
+        <meta
+          property="og:description"
+          content="Learn to identify animals using flash cards!"
+        />
+        <meta property="og:site_name" content="Kiddyverse" />
+        <meta
+          property="og:image"
+          content="https://kiddyverse.vercel.app/meta-preview.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://kiddyverse.vercel.app/animals"
+        />
       </Head>
 
       <main className="relative flex h-screen w-full items-center justify-center bg-[#F5F7F8]">

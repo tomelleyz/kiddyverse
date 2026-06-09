@@ -30,15 +30,34 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Kids&apos; Corner</title>
+        <title>Kiddyverse | Explore and learn with fun games!</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Explore and learn with fun games!" />
-        <meta name="theme-color" content="#e0f7fa" />
+        <meta
+          name="description"
+          content="A playground for kids to have fun learning colours, shapes, animals, fruits & vegetables, and everyday objects."
+        />
+
+        <link rel="canonical" href="https://kiddyverse.vercel.app" />
+        <meta
+          property="og:title"
+          content="Kiddyverse | Explore and learn with fun games!"
+        />
+        <meta
+          property="og:description"
+          content="A playground for kids to have fun learning colours, shapes, animals, fruits & vegetables, and everyday objects."
+        />
+        <meta property="og:site_name" content="Kiddyverse" />
+        <meta
+          property="og:image"
+          content="https://kiddyverse.vercel.app/meta-preview.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kiddyverse.vercel.app" />
       </Head>
 
-      <main className="relative min-h-dvh bg-blue-100 px-4 py-24 sm:py-[120px]">
+      <main className="relative min-h-dvh bg-[#F5F7F8] px-4 py-24 sm:py-[120px]">
         <header className="fixed top-0 left-0 w-full bg-transparent px-4 py-6 text-lg font-semibold lg:p-8">
-          KIDS&apos; CORNER
+          KIDDYVERSE
         </header>
 
         <div className="absolute top-8 right-10 size-[60px] rounded-full bg-green-100 lg:size-[100px]"></div>
@@ -185,7 +204,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="flex flex-wrap items-center justify-center gap-1 bg-blue-100 px-4 pb-8 text-center text-xs text-gray-400">
+      <footer className="flex flex-wrap items-center justify-center gap-1 bg-[#F5F7F8] px-4 pb-8 text-center text-xs text-gray-400">
         <span>
           Built with ❤️ by{" "}
           <a

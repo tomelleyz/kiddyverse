@@ -7,9 +7,32 @@ export default function EverydayObjects() {
   return (
     <>
       <Head>
-        <title>Identify Different Objects</title>
+        <title>Kiddyverse | Identify everyday objects</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Identify different objects" />
+        <meta
+          name="description"
+          content="Learn to identify everyday objects using flash cards!"
+        />
+
+        <link rel="canonical" href="https://kiddyverse.vercel.app/animals" />
+        <meta
+          property="og:title"
+          content="Kiddyverse | Identify everyday objects"
+        />
+        <meta
+          property="og:description"
+          content="Learn to identify everyday objects using flash cards!"
+        />
+        <meta property="og:site_name" content="Kiddyverse" />
+        <meta
+          property="og:image"
+          content="https://kiddyverse.vercel.app/meta-preview.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://kiddyverse.vercel.app/everyday-objects"
+        />
       </Head>
 
       <main className="relative flex h-screen w-full items-center justify-center bg-[#F5F7F8]">

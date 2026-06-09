@@ -10,13 +10,29 @@ export default function Shapes() {
   return (
     <>
       <Head>
-        <title>Shape adventure</title>
+        <title>Kiddyverse | Shape adventure</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="Drag-and-drop shape puzzle game to help young children identify, match, and name shapes."
         />
-        <meta name="theme-color" content="oklch(96.2% 0.059 95.617)" />
+
+        <link rel="canonical" href="https://kiddyverse.vercel.app/shapes" />
+        <meta property="og:title" content="Kiddyverse | Shape Adventure" />
+        <meta
+          property="og:description"
+          content="Drag-and-drop shape puzzle game to help young children identify, match, and name shapes."
+        />
+        <meta property="og:site_name" content="Kiddyverse" />
+        <meta
+          property="og:image"
+          content="https://kiddyverse.vercel.app/meta-preview.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://kiddyverse.vercel.app/shapes"
+        />
       </Head>
 
       <main className="relative min-h-dvh bg-amber-100 select-none">
