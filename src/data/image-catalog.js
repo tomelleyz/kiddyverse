@@ -96,4 +96,5 @@ export const featuredImages = {
   lion: createImageItem("animals", "lion", "Lion"),
   apple: createImageItem("fruits-and-vegetables", "apple", "Apple"),
   car: createImageItem("everyday-objects", "car", "Car"),
+  playground: createImageItem("everyday-objects", "playground", "Playground"),
 };

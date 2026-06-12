@@ -55,15 +55,27 @@ export default function Home() {
         <meta property="og:url" content="https://kiddyverse.vercel.app" />
       </Head>
 
-      <main className="relative min-h-dvh bg-[#F5F7F8] px-4 py-24 sm:py-[120px]">
-        <header className="fixed top-0 left-0 w-full bg-transparent px-4 py-6 text-lg font-semibold lg:p-8">
-          KIDDYVERSE
+      <main className="relative flex min-h-dvh flex-col gap-8 bg-[#F5F7F8] px-4 pt-6 pb-24 sm:px-8 sm:pb-[120px] lg:pt-8">
+        <header className="flex flex-col text-lg font-semibold">
+          <span>KIDDYVERSE</span>
+
+          <div className="relative size-28 self-center lg:size-40">
+            <Image
+              src={featuredImages.playground.src}
+              alt={featuredImages.playground.alt}
+              fill
+              sizes="(min-width: 1024px) 160px, 112px"
+              className="object-contain object-center"
+              priority
+            />
+          </div>
         </header>
 
-        <div className="absolute top-8 right-10 size-[60px] rounded-full bg-green-100 lg:size-[100px]"></div>
+        <div className="absolute top-8 right-10 size-[40px] rounded-full bg-green-100 sm:size-[60px] lg:size-[100px]"></div>
         <div className="absolute bottom-8 left-4 size-[80px] rotate-45 rounded-xl bg-[#EECECF] lg:size-[140px]"></div>
         <div className="absolute right-1/12 bottom-[20%] size-12 bg-purple-100 [clip-path:polygon(50%_0%,_0%_100%,_100%_100%)]"></div>
 
+        {/* Main Content */}
         <div className="relative mx-auto max-w-3xl rounded-xl bg-white px-4 py-10 text-center shadow-md lg:px-8 lg:pt-12 lg:pb-8">
           <div className="mb-6 lg:mb-8">
             <h1 className="text-2xl font-semibold lg:text-3xl">
