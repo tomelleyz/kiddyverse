@@ -6,7 +6,7 @@ import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 // --- Constants ---
 const ITEM_WIDTH = 200; // Width of each grid item
 const ITEM_HEIGHT = 200; // Height of each grid item
-const VIRTUAL_SIZE = 1000000; // Large virtual dimension for "infinite" scroll
+const VIRTUAL_SIZE = 100; // Large virtual dimension for "infinite" scroll
 const BUFFER = 2; // Number of extra items to render on each side (top, bottom, left, right)
 
 /**
