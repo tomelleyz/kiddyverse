@@ -5,6 +5,7 @@ import ShapeDropzone from "./ShapeDropzone";
 import GameProgressBar from "./GameProgressBar";
 import GameCompleteScreen from "./GameCompleteScreen";
 import { DragDropProvider } from "@dnd-kit/react";
+import { play } from "cuelume";
 
 const allShapes = [
   { name: "Circle", clipPath: "circle(50% at 50% 50%)" },
@@ -60,16 +61,6 @@ const allShapes = [
   { name: "Semicircle", clipPath: "circle(50% at 50% 100%)" },
 ];
 
-const sounds = {
-  correctAnswer: new Audio("/assets/sounds/correct-answer.mp3"),
-  wrongBuzzer: new Audio("/assets/sounds/wrong-buzzer.mp3"),
-};
-
-const playSound = (name) => {
-  sounds[name].currentTime = 0;
-  sounds[name].play();
-};
-
 export default function ColorGameScreen() {
   const [score, setScore] = useState(0);
   const [targetShape, setTargetShape] = useState(null);
@@ -84,6 +75,7 @@ export default function ColorGameScreen() {
 
   const startNewRound = () => {
     if (shapesNotYetAsked.length === 0) {
+      play("sparkle");
       setGameCompleted(true);
       setTargetShape(null);
       setShapesNotYetAsked([...allShapes]);
@@ -143,7 +135,7 @@ export default function ColorGameScreen() {
         <GameCompleteScreen
           gameType="shapes"
           score={score}
-          all={allShapes}
+          maxScore={allShapes.length}
           resetGame={resetGame}
         />
       ) : (
@@ -186,14 +178,14 @@ export default function ColorGameScreen() {
                   if (source.id === targetShape.name) {
                     setIsDropped(target?.id === "shapeDropzone");
                     setScore((prevScore) => prevScore + 1);
-                    playSound("correctAnswer");
+                    play("success");
                     setTimeout(() => {
                       startNewRound();
                     }, 3000);
                   } else {
                     const newAttempts = attempts + 1;
                     setAttempts(newAttempts);
-                    playSound("wrongBuzzer");
+                    play("error");
 
                     if (newAttempts >= 2) {
                       setShowCorrectShape(true);

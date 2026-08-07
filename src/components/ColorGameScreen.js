@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import GameProgressBar from "./GameProgressBar";
 import GameCompleteScreen from "./GameCompleteScreen";
+import { play } from "cuelume";
 
 const allColors = [
   { name: "Red", hexcode: "#FF0000" },
@@ -26,16 +27,6 @@ const allColors = [
   { name: "Navy", hexcode: "#000080" },
 ];
 
-const sounds = {
-  correctAnswer: new Audio("/assets/sounds/correct-answer.mp3"),
-  wrongBuzzer: new Audio("/assets/sounds/wrong-buzzer.mp3"),
-};
-
-const playSound = (name) => {
-  sounds[name].currentTime = 0;
-  sounds[name].play();
-};
-
 export default function ColorGameScreen() {
   const [score, setScore] = useState(0);
   const [targetColor, setTargetColor] = useState(null);
@@ -48,6 +39,7 @@ export default function ColorGameScreen() {
 
   function startNewRound() {
     if (colorsNotYetAsked.length === 0) {
+      play("sparkle");
       setGameCompleted(true);
       setTargetColor(null);
       setColorsNotYetAsked([...allColors]);
@@ -92,12 +84,12 @@ export default function ColorGameScreen() {
   const handleColorClick = (clickedColor) => {
     if (clickedColor.name === targetColor.name) {
       setScore((prevScore) => prevScore + 1);
-      playSound("correctAnswer");
+      play("success");
       startNewRound();
     } else {
       const newAttempts = attempts + 1;
       setAttempts(newAttempts);
-      playSound("wrongBuzzer");
+      play("error");
 
       if (newAttempts >= 3) {
         setShowCorrectColor(true);
@@ -123,8 +115,9 @@ export default function ColorGameScreen() {
     <div className="p-8">
       {gameCompleted ? (
         <GameCompleteScreen
+          gameType="colors"
           score={score}
-          all={allColors}
+          maxScore={allColors.length}
           resetGame={resetGame}
         />
       ) : (

@@ -22,7 +22,7 @@ export const itemAnimation = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "tween", ease: "easeOut", duration: 0.3 },
+    transition: { type: "tween", ease: "easeOut", duration: 0.2 },
   },
 };
 
@@ -96,6 +96,8 @@ export default function Home() {
             >
               <Link
                 href="/colors"
+                data-cuelume-press
+                data-cuelume-release
                 className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-red-600 p-4 text-white"
               >
                 <h3 className="pb-4 text-left text-3xl font-semibold">
@@ -119,6 +121,8 @@ export default function Home() {
             >
               <Link
                 href="/shapes"
+                data-cuelume-press
+                data-cuelume-release
                 className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-blue-600 p-4 text-white"
               >
                 <h3 className="pb-4 text-left text-3xl font-semibold">
@@ -143,6 +147,8 @@ export default function Home() {
             >
               <Link
                 href="/animals"
+                data-cuelume-press
+                data-cuelume-release
                 className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-orange-600 p-4 text-white"
               >
                 <h3 className="pb-4 text-left text-3xl font-semibold">
@@ -167,6 +173,8 @@ export default function Home() {
             >
               <Link
                 href="/fruits-and-vegetables"
+                data-cuelume-press
+                data-cuelume-release
                 className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-green-600 p-4 text-white"
               >
                 <h3 className="pb-4 text-left text-3xl font-semibold">
@@ -190,6 +198,8 @@ export default function Home() {
             >
               <Link
                 href="/everyday-objects"
+                data-cuelume-press
+                data-cuelume-release
                 className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-purple-600 p-4 text-white"
               >
                 <h3 className="pb-4 text-left text-3xl font-semibold">
