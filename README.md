@@ -1,6 +1,6 @@
 ## Kids Learning App
 
-A kids app to learn colours, shapes, animals, fruits & vegetables, and everyday objects through games and flashcards.
+A kids app to learn colors, shapes, animals, fruits & vegetables, and everyday objects through games and flashcards.
 
 The app features the following:
 

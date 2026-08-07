@@ -6,7 +6,7 @@ const NoSSRGame = dynamic(() => import("@/components/ColorGameScreen"), {
   ssr: false,
 });
 
-export default function Colours() {
+export default function Colors() {
   return (
     <>
       <Head>
@@ -14,14 +14,14 @@ export default function Colours() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Colour matching game to help young children identify, match, and name colours."
+          content="Colour matching game to help young children identify, match, and name colors."
         />
 
-        <link rel="canonical" href="https://kiddyverse.vercel.app/colours" />
+        <link rel="canonical" href="https://kiddyverse.vercel.app/colors" />
         <meta property="og:title" content="Kiddyverse | Colour matching" />
         <meta
           property="og:description"
-          content="Colour matching game to help young children identify, match, and name colours."
+          content="Colour matching game to help young children identify, match, and name colors."
         />
         <meta property="og:site_name" content="Kiddyverse" />
         <meta
@@ -31,7 +31,7 @@ export default function Colours() {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://kiddyverse.vercel.app/colours"
+          content="https://kiddyverse.vercel.app/colors"
         />
       </Head>
 

@@ -19,7 +19,7 @@ export default function GameCompleteScreen({
       </p>
       <div className="flex flex-col flex-wrap justify-center gap-6 md:flex-row">
         <Link
-          href={gameType === "shapes" ? "/colours" : "/shapes"}
+          href={gameType === "shapes" ? "/colors" : "/shapes"}
           className="order-last cursor-pointer rounded-full bg-[#79ee8d] px-8 py-3 text-xl font-semibold text-white transition-transform active:scale-[0.98] md:order-none md:min-w-[290px]"
         >
           Play {gameType === "shapes" ? "Colour Matching" : "Shape Puzzle"}

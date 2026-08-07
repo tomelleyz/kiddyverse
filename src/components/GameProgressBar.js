@@ -5,7 +5,7 @@ export default function GameProgressBar({ alreadyAsked, all }) {
         Score: {score}/{allColors.length}
       </span>
       <span className="block text-lg font-semibold text-gray-600">
-        Remaining colours: {colorsNotYetAsked.length}
+        Remaining colors: {colorsNotYetAsked.length}
       </span> */}
 
       <svg

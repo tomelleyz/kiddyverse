@@ -34,7 +34,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="A playground for kids to have fun learning colours, shapes, animals, fruits & vegetables, and everyday objects."
+          content="A playground for kids to have fun learning colors, shapes, animals, fruits & vegetables, and everyday objects."
         />
 
         <link rel="canonical" href="https://kiddyverse.vercel.app" />
@@ -44,7 +44,7 @@ export default function Home() {
         />
         <meta
           property="og:description"
-          content="A playground for kids to have fun learning colours, shapes, animals, fruits & vegetables, and everyday objects."
+          content="A playground for kids to have fun learning colors, shapes, animals, fruits & vegetables, and everyday objects."
         />
         <meta property="og:site_name" content="Kiddyverse" />
         <meta
@@ -76,7 +76,7 @@ export default function Home() {
         <div className="absolute right-1/12 bottom-[20%] size-12 bg-purple-100 [clip-path:polygon(50%_0%,_0%_100%,_100%_100%)]"></div>
 
         {/* Main Content */}
-        <div className="relative mx-auto max-w-3xl rounded-xl bg-white px-4 py-10 text-center shadow-md lg:px-8 lg:pt-12 lg:pb-8">
+        <div className="relative mx-auto max-w-2xl rounded-xl bg-white px-4 py-10 text-center shadow-md lg:px-8 lg:pt-12 lg:pb-8">
           <div className="mb-6 lg:mb-8">
             <h1 className="text-2xl font-semibold lg:text-3xl">
               Choose your adventure
@@ -95,23 +95,22 @@ export default function Home() {
               className="col-span-full sm:col-span-2"
             >
               <Link
-                href="/colours"
-                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+                href="/colors"
+                className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-red-600 p-4 text-white"
               >
-                <div className="relative size-16 lg:size-20">
+                <h3 className="pb-4 text-left text-3xl font-semibold">
+                  Colors
+                </h3>
+                <div className="relative mr-[-25%] size-40">
                   <Image
                     src={featuredImages.palette.src}
                     alt={featuredImages.palette.alt}
                     fill
-                    sizes="(min-width: 1024px) 80px, 64px"
-                    className="object-contain object-center"
+                    sizes="160px"
+                    className="object-contain object-center [filter:drop-shadow(1px_1px_white)_drop-shadow(1px_-1px_white)_drop-shadow(-1px_1px_white)_drop-shadow(-1px_-1px_white)]"
                     priority
                   />
                 </div>
-                <h3 className="text-xl font-semibold">Colours</h3>
-                <p className="text-gray-500">
-                  Learn red, green, blue and more!
-                </p>
               </Link>
             </motion.div>
             <motion.div
@@ -120,22 +119,21 @@ export default function Home() {
             >
               <Link
                 href="/shapes"
-                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+                className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-blue-600 p-4 text-white"
               >
-                <div className="relative size-16 lg:size-20">
+                <h3 className="pb-4 text-left text-3xl font-semibold">
+                  Shapes
+                </h3>
+                <div className="relative mr-[-25%] size-40">
                   <Image
                     src={featuredImages.star.src}
                     alt={featuredImages.star.alt}
                     fill
-                    sizes="(min-width: 1024px) 80px, 64px"
-                    className="object-contain object-center"
+                    sizes="160px"
+                    className="object-contain object-center [filter:drop-shadow(1px_1px_white)_drop-shadow(1px_-1px_white)_drop-shadow(-1px_1px_white)_drop-shadow(-1px_-1px_white)]"
                     priority
                   />
                 </div>
-                <h3 className="text-xl font-semibold">Shapes</h3>
-                <p className="text-gray-500">
-                  Discover circles, squares and triangles.
-                </p>
               </Link>
             </motion.div>
 
@@ -145,22 +143,21 @@ export default function Home() {
             >
               <Link
                 href="/animals"
-                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+                className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-orange-600 p-4 text-white"
               >
-                <div className="relative size-16 lg:size-20">
+                <h3 className="pb-4 text-left text-3xl font-semibold">
+                  Animals
+                </h3>
+                <div className="relative mr-[-25%] size-40">
                   <Image
                     src={featuredImages.lion.src}
                     alt={featuredImages.lion.alt}
                     fill
-                    sizes="(min-width: 1024px) 80px, 64px"
-                    className="object-contain object-center"
+                    sizes="160px"
+                    className="object-contain object-center [filter:drop-shadow(1px_1px_white)_drop-shadow(1px_-1px_white)_drop-shadow(-1px_1px_white)_drop-shadow(-1px_-1px_white)]"
                     priority
                   />
                 </div>
-                <h3 className="text-xl font-semibold">Animals</h3>
-                <p className="text-gray-500">
-                  Meet lions, monkeys and puppies!
-                </p>
               </Link>
             </motion.div>
 
@@ -170,22 +167,21 @@ export default function Home() {
             >
               <Link
                 href="/fruits-and-vegetables"
-                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+                className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-green-600 p-4 text-white"
               >
-                <div className="relative size-16 lg:size-20">
+                <h3 className="pb-4 text-left text-3xl font-semibold">
+                  Fruits & Vegetables
+                </h3>
+                <div className="relative mr-[-25%] size-40">
                   <Image
                     src={featuredImages.apple.src}
                     alt={featuredImages.apple.alt}
                     fill
-                    sizes="(min-width: 1024px) 80px, 64px"
-                    className="object-contain object-center"
+                    sizes="160px"
+                    className="object-contain object-center [filter:drop-shadow(1px_1px_white)_drop-shadow(1px_-1px_white)_drop-shadow(-1px_1px_white)_drop-shadow(-1px_-1px_white)]"
                     priority
                   />
                 </div>
-                <h3 className="text-xl font-semibold">Fruits & Vegetables</h3>
-                <p className="text-gray-500">
-                  Yummy apples, carrots and bananas.
-                </p>
               </Link>
             </motion.div>
             <motion.div
@@ -194,22 +190,21 @@ export default function Home() {
             >
               <Link
                 href="/everyday-objects"
-                className="flex flex-col items-center justify-center gap-3 rounded-xl border border-gray-200 p-4"
+                className="flex flex-row items-end justify-between gap-3 overflow-hidden rounded-xl bg-purple-600 p-4 text-white"
               >
-                <div className="relative size-16 lg:size-20">
+                <h3 className="pb-4 text-left text-3xl font-semibold">
+                  Everyday objects
+                </h3>
+                <div className="relative mr-[-25%] size-40">
                   <Image
                     src={featuredImages.car.src}
                     alt={featuredImages.car.alt}
                     fill
-                    sizes="(min-width: 1024px) 80px, 64px"
-                    className="object-contain object-center"
+                    sizes="160px"
+                    className="object-contain object-center [filter:drop-shadow(1px_1px_white)_drop-shadow(1px_-1px_white)_drop-shadow(-1px_1px_white)_drop-shadow(-1px_-1px_white)]"
                     priority
                   />
                 </div>
-                <h3 className="text-xl font-semibold">Everyday objects</h3>
-                <p className="text-gray-500">
-                  Cars, balls, bicycles and much more.
-                </p>
               </Link>
             </motion.div>
           </motion.div>
