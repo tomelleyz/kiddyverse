@@ -6,7 +6,7 @@ import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 // --- Constants ---
 const ITEM_WIDTH = 200; // Width of each grid item
 const ITEM_HEIGHT = 200; // Height of each grid item
-const VIRTUAL_SIZE = 100; // Large virtual dimension for "infinite" scroll
+const VIRTUAL_SIZE = 1000000; // Large virtual dimension for "infinite" scroll
 const BUFFER = 2; // Number of extra items to render on each side (top, bottom, left, right)
 
 /**
@@ -196,6 +196,8 @@ export default function InfiniteGrid({ items, isDraggable = false }) {
 
         rendered.push(
           <motion.button
+            data-cuelume-press
+            data-cuelume-release
             data-pos={`row-${r}, col-${c}`}
             key={`${r}-${c}`}
             style={style}
@@ -253,6 +255,7 @@ export default function InfiniteGrid({ items, isDraggable = false }) {
               <Dialog.Portal forceMount>
                 <Dialog.Overlay asChild forceMount>
                   <motion.div
+                    data-cuelume-press
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -275,6 +278,7 @@ export default function InfiniteGrid({ items, isDraggable = false }) {
                       >
                         <Dialog.Close asChild>
                           <button
+                            data-cuelume-press
                             aria-label="Close"
                             className="flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/20 text-white backdrop-blur-md transition-colors hover:bg-black/40"
                           >
