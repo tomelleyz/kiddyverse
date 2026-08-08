@@ -103,7 +103,7 @@ export default function Home() {
                 <h3 className="pb-4 text-left text-3xl font-semibold">
                   Colors
                 </h3>
-                <div className="relative mr-[-25%] size-40">
+                <div className="relative mr-[-25%] size-40 shrink-0">
                   <Image
                     src={featuredImages.palette.src}
                     alt={featuredImages.palette.alt}
@@ -128,7 +128,7 @@ export default function Home() {
                 <h3 className="pb-4 text-left text-3xl font-semibold">
                   Shapes
                 </h3>
-                <div className="relative mr-[-25%] size-40">
+                <div className="relative mr-[-25%] size-40 shrink-0">
                   <Image
                     src={featuredImages.star.src}
                     alt={featuredImages.star.alt}
@@ -154,7 +154,7 @@ export default function Home() {
                 <h3 className="pb-4 text-left text-3xl font-semibold">
                   Animals
                 </h3>
-                <div className="relative mr-[-25%] size-40">
+                <div className="relative mr-[-25%] size-40 shrink-0">
                   <Image
                     src={featuredImages.lion.src}
                     alt={featuredImages.lion.alt}
@@ -180,7 +180,7 @@ export default function Home() {
                 <h3 className="pb-4 text-left text-3xl font-semibold">
                   Fruits & Vegetables
                 </h3>
-                <div className="relative mr-[-25%] size-40">
+                <div className="relative mr-[-25%] size-40 shrink-0">
                   <Image
                     src={featuredImages.apple.src}
                     alt={featuredImages.apple.alt}
@@ -205,7 +205,7 @@ export default function Home() {
                 <h3 className="pb-4 text-left text-3xl font-semibold">
                   Everyday objects
                 </h3>
-                <div className="relative mr-[-25%] size-40">
+                <div className="relative mr-[-25%] size-40 shrink-0">
                   <Image
                     src={featuredImages.car.src}
                     alt={featuredImages.car.alt}

@@ -196,8 +196,7 @@ export default function InfiniteGrid({ items, isDraggable = false }) {
 
         rendered.push(
           <motion.button
-            data-cuelume-press
-            data-cuelume-release
+            data-cuelume-press="arrival"
             data-pos={`row-${r}, col-${c}`}
             key={`${r}-${c}`}
             style={style}
