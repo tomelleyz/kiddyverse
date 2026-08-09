@@ -35,7 +35,7 @@ export default function EverydayObjects() {
         />
       </Head>
 
-      <main className="relative flex h-screen w-full items-center justify-center bg-[#F5F7F8]">
+      <main className="relative min-h-dvh w-full bg-[#F5F7F8]">
         <div className="fixed top-6 left-6 z-10 w-fit">
           <Link
             href="/"

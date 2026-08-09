@@ -22,7 +22,7 @@ export const itemAnimation = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "tween", ease: "easeOut", duration: 0.2 },
+    transition: { type: "tween", ease: "easeOut", duration: 0.3 },
   },
 };
 
@@ -76,7 +76,7 @@ export default function Home() {
         <div className="absolute right-1/12 bottom-[20%] size-12 bg-purple-100 [clip-path:polygon(50%_0%,_0%_100%,_100%_100%)]"></div>
 
         {/* Main Content */}
-        <div className="relative mx-auto max-w-2xl rounded-xl bg-white px-4 py-10 text-center shadow-md lg:px-8 lg:pt-12 lg:pb-8">
+        <div className="relative mx-auto max-w-2xl rounded-xl bg-white px-4 py-10 text-center shadow-md sm:px-8 lg:pt-12 lg:pb-8">
           <div className="mb-6 lg:mb-8">
             <h1 className="text-2xl font-semibold lg:text-3xl">
               Choose your adventure

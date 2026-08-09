@@ -144,7 +144,7 @@ export default function ColorGameScreen() {
                     style={{ backgroundColor: targetColor.hexcode }}
                   ></span>{" "}
                 </motion.span>
-                colour?
+                color?
               </motion.h1>
             )}
             <div className="grid grid-cols-2 gap-6 sm:gap-12">

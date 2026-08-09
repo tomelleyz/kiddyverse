@@ -11,7 +11,7 @@ export default function GameCompleteScreen({
   return (
     <div className="mx-auto max-w-2xl text-center">
       <h1 className="mb-3 text-5xl font-bold text-teal-600">
-        {scoreInPercent >= 70 ? "🎉 You Did It! 🎉" : "Good Effort! 👍"}
+        {scoreInPercent >= 70 ? "You Did It! 🎉" : "Good Effort! 👍"}
       </h1>
       <p className="mb-6 text-2xl font-semibold">
         {scoreInPercent >= 70
