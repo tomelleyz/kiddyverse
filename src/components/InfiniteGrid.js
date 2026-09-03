@@ -90,6 +90,7 @@ export default function InfiniteGrid({ items }) {
                       alt={activeItem.alt}
                       width={240}
                       height={240}
+                      loading="eager"
                     />
 
                     <Dialog.Title asChild>
