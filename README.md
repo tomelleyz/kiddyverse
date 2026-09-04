@@ -5,7 +5,7 @@ A kids app to learn colors, shapes, animals, fruits & vegetables, and everyday o
 The app features the following:
 
 - Colour matching
-- Shape puzzle
+- Shape puzzle - drag shape to fit outline
 - Animals
 - Fruits & vegetables
 - Everyday objects

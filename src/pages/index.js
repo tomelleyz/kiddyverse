@@ -223,20 +223,21 @@ export default function Home() {
 
       <footer className="flex flex-wrap items-center justify-center gap-1 bg-[#F5F7F8] px-4 pb-8 text-center text-xs text-gray-400">
         <span>
-          Built with ❤️ by{" "}
+          Built with ❤️ by a doting{" "}
           <a
             href="https://tomelleyz.github.io"
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
           >
-            Ola
-          </a>
+            uncle
+          </a>{" "}
+          for his little niece
         </span>
         &#8226;
-        <span>Designed for children aged 2–6</span>
-        &#8226;
         <span>Parental guidance recommended</span>
+        &#8226;
+        <span>Monitor screen time</span>
         &#8226;
         <span>3D icons from thiings.co</span>
       </footer>
