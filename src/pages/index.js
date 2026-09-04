@@ -237,7 +237,7 @@ export default function Home() {
         &#8226;
         <span>Parental guidance recommended</span>
         &#8226;
-        <span>Monitor screen time</span>
+        <span>Manage screen time</span>
         &#8226;
         <span>3D icons from thiings.co</span>
       </footer>
