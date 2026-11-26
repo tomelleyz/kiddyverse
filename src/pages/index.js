@@ -225,7 +225,7 @@ export default function Home() {
         <span>
           Built with ❤️ by a doting{" "}
           <a
-            href="https://tomelleyz.github.io"
+            href="https://www.olaeleyinmi.com"
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
